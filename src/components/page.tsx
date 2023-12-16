@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 interface StoryComponentProps {
@@ -10,7 +11,7 @@ export function StoryComponent({ newsType, newsData }: StoryComponentProps) {
     return (
     <section key={index+item.title}>
       <div>
-        <img
+        <Image
           alt={item.title}
           className="w-full h-64 object-cover object-center rounded-lg"
           height="400"
