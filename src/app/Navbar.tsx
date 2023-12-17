@@ -18,7 +18,7 @@ export default function Navbar() {
   }, []);
   const renderCategories = categories && categories.map((category,index) => {
     return index <= 5 && (
-      <Link className="text-zinc-100 hover:text-zinc-400" key={index+category} href={"/"+category}>
+      <Link className="text-zinc-100 hover:text-zinc-400 cursor-pointer" key={index+category} href={"/"+category}>
         {category}
       </Link>
     );
@@ -27,7 +27,7 @@ export default function Navbar() {
     <header className="bg-black text-zinc-100 py-4 border-w">
       <div className="container mx-auto px-4 md:px-6">
         <nav className="flex items-center justify-between">
-          <div className="text-2xl font-bold">Average News</div>
+          <div className="text-2xl font-bold cursor-pointer" onClick={()=>window.location.href = "/"}>Average News</div>
           <div className="space-x-4">{renderCategories}</div>
         </nav>
       </div>
