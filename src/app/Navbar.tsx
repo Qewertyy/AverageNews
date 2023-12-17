@@ -4,15 +4,19 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<string[]|undefined>([]);
   const fetchCategories = async () => {
-    const res = await getCategories();
-    setCategories(res);
+    try {
+      const res = await getCategories();
+      setCategories(res);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
   };
   useEffect(() => {
     fetchCategories();
   }, []);
-  const renderCategories = categories.map((category,index) => {
+  const renderCategories = categories && categories.map((category,index) => {
     return index <= 5 && (
       <Link className="text-zinc-100 hover:text-zinc-400" key={index+category} href={"/"+category}>
         {category}

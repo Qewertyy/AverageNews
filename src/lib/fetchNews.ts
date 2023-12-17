@@ -1,4 +1,4 @@
-export async function getCategories() {
+export async function getCategories() : Promise<string[]|undefined>{
   try {
     const response = await fetch("https://api.qewertyy.me/news/categories", {
       method: "GET",
@@ -7,6 +7,7 @@ export async function getCategories() {
     return ["Anime",...categories["content"]];
   } catch (error) {
     console.log(error);
+    return undefined;
   }
 }
 

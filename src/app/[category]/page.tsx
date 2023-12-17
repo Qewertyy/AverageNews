@@ -5,7 +5,7 @@ import { usePathname, notFound } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function News() {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<string[] | undefined>([]);
   const [category, setCategory] = useState("");
   const [news, setNews] = useState([]);
 
@@ -43,6 +43,9 @@ export default function News() {
     fetchNews();
   }, [category]);
 
+  if (!categories) {
+    return notFound()
+  }
   if (categories.length === 0) {
     return <p>Loading...</p>;
   }
