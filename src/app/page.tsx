@@ -2,7 +2,7 @@
 import Navbar from "./Navbar";
 import { topNews } from "@/lib/fetchNews";
 import { useEffect, useState } from "react";
-import { StoryComponent } from "@/components/page";
+import { NewsComponent } from "@/components/page";
 export default function Home() {
   const [topStory, setTopStory] = useState([]);
   const [counts, setCounts] = useState(6);
@@ -21,8 +21,7 @@ export default function Home() {
   };
   return (
     <>
-      <Navbar />
-      <StoryComponent newsType="Top Stories" newsData={topStory} />
+      <NewsComponent newsType="Top Stories" newsData={topStory} />
       <div className="flex justify-center">
         { loading ? (<button type="button" className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded" disabled>
           <svg className="animate-spin h-1 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface StoryComponentProps {
+interface newsProps {
   newsType: string;
   newsData: {
     newsId: string;
@@ -12,7 +12,7 @@ interface StoryComponentProps {
   }[];
 }
 
-export function StoryComponent({ newsType, newsData }: StoryComponentProps) {
+export function NewsComponent({ newsType, newsData }: newsProps) {
   const items = newsData.map((item: any,index: number) => {
     return (
     <section key={item.newsId}>

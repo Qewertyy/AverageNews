@@ -4,7 +4,7 @@ export async function getCategories() {
       method: "GET",
     });
     const categories = await response.json();
-    return categories["content"];
+    return ["Anime",...categories["content"]];
   } catch (error) {
     console.log(error);
   }
@@ -23,4 +23,20 @@ export async function topNews(limit?: number) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function getNewsByCategory(category: string, page?: 1) {
+  try {
+    console.log(category);
+    const response = await fetch(`https://api.qewertyy.me/news/${category}?page=${page || 1}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const news = await response.json();
+    return news['content'];
+  } catch (error) {
+    console.log(error);
+  } 
 }

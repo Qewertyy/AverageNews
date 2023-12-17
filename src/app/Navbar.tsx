@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [categories, setCategories] = useState([]);
-  
   const fetchCategories = async () => {
     const res = await getCategories();
     setCategories(res);
@@ -15,7 +14,7 @@ export default function Navbar() {
   }, []);
   const renderCategories = categories.map((category,index) => {
     return index <= 5 && (
-      <Link className="text-zinc-100 hover:text-zinc-400" key={index+category} href="#">
+      <Link className="text-zinc-100 hover:text-zinc-400" key={index+category} href={"/"+category}>
         {category}
       </Link>
     );
