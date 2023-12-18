@@ -23,7 +23,6 @@ export default function Home() {
     setCounts(counts + 3);
   };
   const ok = usePathname();
-  console.log(ok);
   return (
     <>
       { ok === "/" && <NewsComponent newsType="Top Stories" newsData={topStory} />}
