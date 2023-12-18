@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 
 export default function News() {
   const [categories, setCategories] = useState<string[] | undefined>([]);
-  const [category, setCategory] = useState("");
-  const [news, setNews] = useState([]);
+  const [category, setCategory] = useState<string>("");
+  const [loading, setLoading] = useState(true);
+  const [news, setNews] = useState<any[]>([]);
 
   const fetchCategories = async () => {
     try {
@@ -18,21 +19,22 @@ export default function News() {
     }
   };
 
+  const fetchNews = async () => {
+    try {
+      const res = await getNewsByCategory(category);
+      setNews(res);
+    } catch (error) {
+      console.error("Error fetching news:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const pathname = usePathname();
 
   useEffect(() => {
     fetchCategories();
   }, []);
-
-  const fetchNews = async () => {
-    try {
-      console.log(category);
-      const res = await getNewsByCategory(category);
-      setNews(res);
-    } catch (error) {
-      console.error("Error fetching news:", error);
-    }
-  };
 
   useEffect(() => {
     const newCategory = pathname.split("/")[1];
@@ -40,18 +42,15 @@ export default function News() {
   }, [pathname]);
 
   useEffect(() => {
-    fetchNews();
+    if (category !== "") {
+      fetchNews();
+    }
   }, [category]);
 
-  if (!categories) {
-    return notFound()
-  }
-  if (categories.length === 0) {
+  if (loading || categories === undefined) {
     return <p>Loading...</p>;
   }
-
-  if (!categories.includes(category as string)) {
-    console.log("not found");
+  if (categories.length === 0 || !categories.includes(category)) {
     return notFound();
   }
   return (
