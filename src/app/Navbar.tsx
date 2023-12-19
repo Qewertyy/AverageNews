@@ -78,7 +78,7 @@ export default function Navbar() {
             </div>
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <h1 className=" text-2xl font-bold">Your Average News</h1>
+                <Link className=" text-2xl font-bold cursor-pointer" href='/'>AverageNews</Link>
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
