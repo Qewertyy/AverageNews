@@ -26,9 +26,8 @@ export async function topNews(limit?: number) {
   }
 }
 
-export async function getNewsByCategory(category: string, page?: 1) {
+export async function getNewsByCategory(category: string, page?: number) {
   try {
-    console.log(category);
     const response = await fetch(`https://api.qewertyy.me/news/${category}?page=${page || 1}`, {
       method: "GET",
       headers: {
