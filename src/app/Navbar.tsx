@@ -26,6 +26,7 @@ export default function Navbar() {
             className="text-gray-300 hover:bg-black hover:text-white rounded-md px-3 py-2 text-lg"
             key={index + category}
             href={"/" + category}
+            onClick={() => document.getElementById("nav-check")?.click()}
           >
             {category}
           </Link>
