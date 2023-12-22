@@ -60,6 +60,9 @@ export default function News() {
       <button
           className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
           disabled={true}
+          style={{
+            cursor: "not-allowed",
+          }}
         >
           Previous
         </button>
