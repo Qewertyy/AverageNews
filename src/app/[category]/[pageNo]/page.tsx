@@ -21,7 +21,10 @@ export default function News() {
   };
   const pathname = usePathname();
   useEffect(() => {
-    const [newCategory,newPageNo] = [pathname.split("/")[1], pathname.split("/")[2]];
+    const [newCategory, newPageNo] = [
+      pathname.split("/")[1],
+      pathname.split("/")[2],
+    ];
     setCategory(newCategory.charAt(0).toUpperCase() + newCategory.slice(1));
     setPageNo(parseInt(newPageNo));
   }, [pathname]);
@@ -37,11 +40,9 @@ export default function News() {
     }
   };
 
-
   useEffect(() => {
     fetchCategories();
   }, []);
-
 
   useEffect(() => {
     if (category !== "") {
@@ -58,6 +59,25 @@ export default function News() {
   return (
     <div>
       <NewsComponent newsType={category} newsData={news} />
+      <div className="flex justify-center gap-6">
+      <button
+          className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
+          disabled={pageNo === 1}
+          onClick={() => window.location.href = `/${category}/${pageNo - 1}`}
+          style={{
+            cursor: pageNo === 1 ? "not-allowed" : "pointer",
+          }}
+        >
+          Previous
+        </button>
+        <button
+          className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
+          disabled={news.length < 6}
+          onClick={() => window.location.href = `/${category}/${pageNo + 1}`}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }

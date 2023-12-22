@@ -56,6 +56,21 @@ export default function News() {
   return (
     <div>
       <NewsComponent newsType={category} newsData={news} />
+      <div className="flex justify-center gap-6">
+      <button
+          className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
+          disabled={true}
+        >
+          Previous
+        </button>
+        <button
+          className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
+          disabled={news.length < 6}
+          onClick={() => window.location.href = `/${category}/${2}`}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
