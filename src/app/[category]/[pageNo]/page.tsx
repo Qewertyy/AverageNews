@@ -72,7 +72,7 @@ export default function News() {
         </button>
         <button
           className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
-          disabled={news.length < 6}
+          disabled={news.length < 6 || pageNo > 10}
           onClick={() => window.location.href = `/${category}/${pageNo + 1}`}
         >
           Next

@@ -17,7 +17,7 @@ export function NewsComponent({ newsType, newsData }: newsProps) {
     return (
     <section key={item.newsId}>
       <div>
-        <Image
+        <img
           alt={item.title}
           className="w-full h-64 object-cover object-center rounded-lg"
           height="400"
