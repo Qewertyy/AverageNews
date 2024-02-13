@@ -1,6 +1,8 @@
+const baseUrl = "https://api.qewertyy.dev"
+
 export async function getCategories() : Promise<string[]|undefined>{
   try {
-    const response = await fetch("https://api.qewertyy.me/news/categories", {
+    const response = await fetch(baseUrl+"/news/categories", {
       method: "GET",
     });
     const categories = await response.json();
@@ -13,7 +15,7 @@ export async function getCategories() : Promise<string[]|undefined>{
 
 export async function topNews(limit?: number) {
   try {
-    const response = await fetch(`https://api.qewertyy.me/news?limit=${limit || 10}`, {
+    const response = await fetch(`${baseUrl}/news?limit=${limit || 10}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +30,7 @@ export async function topNews(limit?: number) {
 
 export async function getNewsByCategory(category: string, page?: number) {
   try {
-    const response = await fetch(`https://api.qewertyy.me/news/${category}?page=${page || 1}`, {
+    const response = await fetch(`${baseUrl}/news/${category}?page=${page || 1}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
