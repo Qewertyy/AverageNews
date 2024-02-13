@@ -4,6 +4,8 @@ import { getCategories, getNewsByCategory } from "@/lib/fetchNews";
 import { usePathname, notFound } from "next/navigation";
 import { useEffect, useState } from "react";
 
+export const runtime = 'edge';
+
 export default function News() {
   const [categories, setCategories] = useState<string[] | undefined>([]);
   const [category, setCategory] = useState<string>("");
