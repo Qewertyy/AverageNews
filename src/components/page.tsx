@@ -15,7 +15,7 @@ interface newsProps {
 export function NewsComponent({ newsType, newsData }: newsProps) {
   const items = newsData.map((item: any,index: number) => {
     return (
-    <section key={item.newsId}>
+    <section key={item.newsId} className="hover:scale-105 transition-transform">
       <div>
         <img
           alt={item.title}

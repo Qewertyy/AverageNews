@@ -116,7 +116,7 @@ hr {
         background-color: black;
         height: 0px;
         transition: all 0.3s ease-in;
-        overflow-y: hidden;
+        overflow: hidden;
         top: 50px;
         left: 0px;
         color: white;
@@ -138,7 +138,7 @@ hr {
 
     input[type="checkbox"]:checked~.nav-links {
         height: calc(100vh - 50px);
-        overflow-y: auto;
+        overflow: hidden;
     }
 
     input[type="checkbox"]:checked~.nav-title>img {

@@ -33,7 +33,7 @@ export default function Home() {
         </button>) :
 
         (<button
-          className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
+          className="bg-white hover:scale-110 text-black font-bold py-2 px-4 rounded mb-8 transition-transform"
           onClick={handleBtnClick}
         >
           Load More
