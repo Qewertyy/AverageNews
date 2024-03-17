@@ -2,7 +2,7 @@
 import Navbar from "./Navbar";
 import { topNews } from "@/lib/fetchNews";
 import { useEffect, useState } from "react";
-import { NewsComponent } from "@/components/page";
+import { NewsComponent } from "@/components/News";
 import { usePathname } from "next/navigation";
 
 
