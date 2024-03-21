@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Loading } from "./ui/loading";
 
 interface newsProps {
   newsType: string;
