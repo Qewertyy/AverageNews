@@ -1,5 +1,5 @@
 "use client";
-import { NewsComponent } from "@/components/page";
+import { NewsComponent } from "@/components/News";
 import { getCategories, getNewsByCategory } from "@/lib/fetchNews";
 import { usePathname, notFound } from "next/navigation";
 import { useEffect, useState } from "react";

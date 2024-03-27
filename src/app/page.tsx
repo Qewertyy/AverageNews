@@ -1,45 +1,53 @@
 "use client";
-import Navbar from "./Navbar";
 import { topNews } from "@/lib/fetchNews";
 import { useEffect, useState } from "react";
-import { NewsComponent } from "@/components/page";
-import { usePathname } from "next/navigation";
-
+import { NewsComponent, NewsLoading } from "@/components/News";
+import { LoaderIcon } from "lucide-react";
 
 export default function Home() {
   const [topStory, setTopStory] = useState([]);
   const [counts, setCounts] = useState(6);
-  const [loading, setLoading] = useState(false);
+  const [loadMore, setLoadMore] = useState(false);
+  const [loading, setLoading] = useState(true);
   const fetchTStory = async () => {
     const res = await topNews(counts);
+    if (!res) {
+      return <h1>Something went wrong</h1>;
+    }
     setTopStory(res);
     setLoading(false);
+    setLoadMore(false);
   };
   useEffect(() => {
     fetchTStory();
   }, [counts]);
   const handleBtnClick = () => {
-    setLoading(true);
+    setLoadMore(true);
     setCounts(counts + 3);
+    document?.getElementById("mainDiv")?.scrollIntoView({ behavior: "smooth" });
   };
-  const ok = usePathname();
   return (
     <>
-      { ok === "/" && <NewsComponent newsType="Top Stories" newsData={topStory} />}
-      <div className="flex justify-center">
-        { loading ? (<button type="button" className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded" disabled>
-          <svg className="animate-spin h-1 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
-          Loading....
-        </button>) :
-
-        (<button
-          className="bg-white hover:scale-110 text-black font-bold py-2 px-4 rounded mb-8 transition-transform"
-          onClick={handleBtnClick}
+      {loading ? (
+        <NewsLoading />
+      ) : (
+        <div
+          className="flex justify-center p-3 flex-col items-center"
+          id="mainDiv"
         >
-          Load More
-        </button>)
-        }
-      </div>
+          <NewsComponent newsType="Top Stories" newsData={topStory} />
+          {loadMore ? (
+            <LoaderIcon size={32} />
+          ) : (
+            <button
+              className="w-40 bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
+              onClick={handleBtnClick}
+            >
+              Load More
+            </button>
+          )}
+        </div>
+      )}
     </>
   );
 }
