@@ -53,7 +53,7 @@ export function NewsComponent({ newsType, newsData }: newsProps) {
     <main className="container mx-auto px-4 md:px-6 py-8 pb-0 pt-1.5">
       <section className="mb-[0.75rem] flex flex-col items-center">
         <h2 className="text-2xl font-bold mb-4">{newsType}</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 justify-items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 justify-items-center">
           {items}
         </div>
       </section>
