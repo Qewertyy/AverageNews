@@ -1,10 +1,8 @@
 "use client";
-import { NewsComponent } from "@/components/News";
+import { NewsComponent, NewsLoading } from "@/components/News";
 import { getCategories, getNewsByCategory } from "@/lib/fetchNews";
 import { usePathname, notFound } from "next/navigation";
 import { useEffect, useState } from "react";
-
-export const runtime = 'edge';
 
 export default function News() {
   const [categories, setCategories] = useState<string[] | undefined>([]);
@@ -50,7 +48,7 @@ export default function News() {
   }, [category]);
 
   if (loading || categories === undefined) {
-    return <p>Loading...</p>;
+    return <NewsLoading />;
   }
   if (categories.length === 0 || !categories.includes(category)) {
     return notFound();
@@ -58,8 +56,8 @@ export default function News() {
   return (
     <div>
       <NewsComponent newsType={category} newsData={news} />
-      <div className="flex justify-center gap-6">
-      <button
+      <div className="flex justify-center gap-6 mb-8">
+        <button
           className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
           disabled={true}
           style={{
@@ -71,7 +69,7 @@ export default function News() {
         <button
           className="bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
           disabled={news.length < 6}
-          onClick={() => window.location.href = `/${category}/${2}`}
+          onClick={() => (window.location.href = `/${category}/${2}`)}
         >
           Next
         </button>
@@ -79,3 +77,5 @@ export default function News() {
     </div>
   );
 }
+
+export const runtime = 'edge';
