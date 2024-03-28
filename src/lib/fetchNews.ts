@@ -13,9 +13,15 @@ export async function getCategories(): Promise<string[] | undefined> {
   }
 }
 
-export async function topNews(limit: number) {
+export async function topNews(limit: number,newsOffset?:number) {
   try {
-    const response = await fetch(`${baseUrl}/news?limit=${limit}`, {
+    let url;
+    if (newsOffset){
+      url = `${baseUrl}/news?limit=${limit}&newsOffset=${newsOffset}`
+    }else{
+      url = `${baseUrl}/news?limit=${limit}`
+    }
+    const response = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
