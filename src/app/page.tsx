@@ -4,11 +4,25 @@ import { useEffect, useState } from "react";
 import { NewsComponent, NewsLoading } from "@/components/News";
 import { LoaderIcon } from "lucide-react";
 
+type TopStories = {
+  newsId: string;
+  title: string;
+  author: string;
+  source:string;
+  url: string;
+  content: string;
+  description: string;
+  imageUrl: string;
+  timestamp: string;
+  author_url: string;
+};
+
 export default function Home() {
-  const [topStory, setTopStory] = useState([]);
+  const [topStory, setTopStory] = useState<TopStories[]>([]);
   const [counts, setCounts] = useState(6);
   const [loadMore, setLoadMore] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [newsOffset, setNewsOffset] = useState<string>();
   const fetchTStory = async () => {
     const res = await topNews(counts);
     if (!res) {
@@ -22,9 +36,9 @@ export default function Home() {
     fetchTStory();
   }, [counts]);
   const handleBtnClick = () => {
+    setNewsOffset(topStory.at(-1)?.newsId);
     setLoadMore(true);
     setCounts(counts + 3);
-    document?.getElementById("mainDiv")?.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <>
