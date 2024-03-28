@@ -48,7 +48,6 @@ export function NewsComponent({ newsType, newsData }: newsProps) {
       </section>
     );
   });
-  console.log(items.length);
   return (
     <main className="container mx-auto px-4 md:px-6 py-8 pb-0 pt-1.5">
       <section className="mb-[0.75rem] flex flex-col items-center">
