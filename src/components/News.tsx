@@ -18,7 +18,7 @@ export function NewsComponent({ newsType, newsData }: newsProps) {
     return (
       <section
         key={item.newsId}
-        className="hover:translate-x-[5px] transition-transform border-solid border-white border-2 p-3 flex flex-col justify-center rounded-md"
+        className="hover:translate-x-[5px] transition-transform border-solid border-[#252525] hover:border-[white] border-2 p-3 flex flex-col justify-center rounded-md"
       >
         <div>
           <img
