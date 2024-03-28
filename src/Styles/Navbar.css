@@ -60,7 +60,7 @@ hr {
     visibility: hidden;
 }
 
-@media (max-width:1300px) {
+@media (max-width:1350px) {
     .nav>.nav-btn {
         display: inline-block;
         position: absolute;
