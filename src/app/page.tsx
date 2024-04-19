@@ -62,6 +62,7 @@ export default function Home() {
           )}
         </div>
       )}
+      <p className="text-center mb-3">Source -&gt; <a target="_blank" className=" text-blue-200 hover:underline" href="https://github.com/Qewertyy/AverageNews">Github</a></p>
     </>
   );
 }
